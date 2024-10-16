@@ -1,0 +1,46 @@
+/* src/pages/Home.css */
+
+/* Style for button container */
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Spacing between buttons */
+  margin-top: 20px;
+}
+
+/* Button Style: Indigo background, white text, fade effect */
+.button-link {
+  text-decoration: none; /* Remove default link underline */
+  background-color: indigo; /* Indigo button background */
+  color: white; /* White text */
+  padding: 12px 24px; /* Adjust padding for button size */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Adjust font size */
+  font-weight: bold; /* Bold text */
+  transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
+  cursor: pointer; /* Pointer cursor */
+  display: inline-block; /* Block-level button */
+}
+
+/* Hover effect: Darker indigo on hover */
+.button-link:hover {
+  background-color: #4b0082; /* Darker indigo when hovered */
+}
+
+/* Fade effect on click */
+.button-link:active {
+  opacity: 0.6; /* Reduce opacity on click */
+  transition: opacity 0.2s ease; /* Quick fade transition */
+}
+
+/* src/pages/Home.css */
+
+/* Text container with light background */
+.text-container {
+  background-color: rgba(255, 255, 255, 0.8); /* Light semi-transparent background */
+  border-radius: 10px; /* Optional: rounded corners */
+  padding: 20px; /* Padding for inner spacing */
+  max-width: 600px; /* Limit width for better readability */
+  margin: auto; /* Center the container */
+  text-align: center; /* Center align text */
+}

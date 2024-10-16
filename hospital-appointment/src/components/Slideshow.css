@@ -1,0 +1,52 @@
+/* src/components/Slideshow.css */
+.slideshow {
+  position: fixed; /* Fixed positioning to cover the viewport */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  overflow: hidden; /* Hide overflow */
+  z-index: -1; /* Send the slideshow behind other content */
+}
+
+.slideshow-image {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  object-fit: cover; /* Ensure the image covers the area */
+  display: block; /* Block display */
+  transition: transform 0.5s ease-in-out; /* Smooth transition for transform */
+  position: absolute; /* Position images absolutely */
+  top: 0; /* Align to the top */
+}
+
+.next {
+  transform: translateX(0); /* Center image */
+}
+
+.prev {
+  transform: translateX(-100%); /* Slide in from left */
+}
+
+.next-active {
+  transform: translateX(100%); /* Slide out to right */
+}
+
+/* Arrow button styles */
+.slide__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+  border: none; /* Remove border */
+  padding: 10px; /* Add padding */
+  cursor: pointer; /* Change cursor on hover */
+  z-index: 1; /* Higher z-index for visibility */
+}
+
+.slide__arrow_left {
+  left: 10px; /* Position left arrow */
+}
+
+.slide__arrow_right {
+  right: 10px; /* Position right arrow */
+}
