@@ -8,12 +8,23 @@ const Booking = () => {
   const [date, setDate] = useState('');
   const [doctor, setDoctor] = useState('');
   const [mobile, setMobile] = useState(''); // New state for mobile number
+  const [confirmationMessage, setConfirmationMessage] = useState(''); // State for confirmation message
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/appointments', { name, date, doctor, mobile });
-      alert('Appointment booked! ID: ' + response.data._id);
+      const response = await axios.post('http://localhost:5000/api/appointments', { name, date, doctor, mobile });
+      setConfirmationMessage(`Booking Confirmed! Appointment ID: ${response.data._id}`); // Set confirmation message
+      // Clear form fields
+      setName('');
+      setMobile('');
+      setDate('');
+      setDoctor('');
+      
+      // Automatically clear the confirmation message after 5 seconds
+      setTimeout(() => {
+        setConfirmationMessage('');
+      }, 5000);
     } catch (error) {
       console.error('Error booking appointment', error);
       alert('Error booking appointment');
@@ -45,6 +56,10 @@ const Booking = () => {
         
         <button type="submit">Book Appointment</button>
       </form>
+
+      {confirmationMessage && ( // Conditionally render confirmation message
+        <div className="confirmation-message">{confirmationMessage}</div>
+      )}
     </div>
   );
 };

@@ -1,30 +1,46 @@
+/* General Body Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0; /* Remove default margin */
 }
 
+/* Navigation Styles */
 nav {
   display: flex; /* Use flexbox for alignment */
-  justify-content: flex-start; /* Align buttons to the left */
+  justify-content: space-between; /* Space out the nav items */
   padding: 10px 20px; /* Add padding for nav */
   background-color: rgba(255, 255, 255, 0.8); /* Optional: background for nav */
 }
 
+/* Container for Left Navigation Buttons */
 .nav-buttons {
-  margin-bottom: 20px; /* Space between nav and slideshow */
   display: flex; /* Ensure the buttons are in a row */
+  gap: 10px; /* Space between buttons */
 }
 
+/* Button Styles */
 .button-link {
-  margin: 0 10px; /* Space between buttons */
   padding: 10px 20px; /* Padding for buttons */
   background-color: indigo; /* Button background color */
   color: white; /* Button text color */
   text-decoration: none; /* Remove underline */
   border-radius: 5px; /* Rounded corners */
   transition: background-color 0.3s, transform 0.2s; /* Transition for effects */
+  display: flex; /* Use flexbox for button content */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
 }
 
+/* Adjust the About Us button */
+.nav-buttons .button-link:last-child {
+  margin-left: auto; /* Push the About Us button to the right */
+  padding: 10px 20px; /* Ensure padding is the same */
+  display: flex; /* Ensure it uses flexbox for alignment */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+
+/* Hover effect */
 .button-link:hover {
   background-color: darkblue; /* Darker color on hover */
   transform: scale(1.05); /* Slight scale effect on hover */

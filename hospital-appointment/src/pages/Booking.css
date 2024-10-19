@@ -81,3 +81,25 @@ body {
     z-index: -1; /* Send behind other content */
     position: relative; /* Set position for stacking context */
 }
+.confirmation-message {
+    background-color: indigo; /* Indigo background */
+    color: white; /* White text */
+    padding: 10px; /* Padding for inner spacing */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 20px; /* Space above the message */
+    text-align: center; /* Center align text */
+    width: 80%; /* Width for better fit */
+    max-width: 300px; /* Maximum width to prevent stretching */
+    animation: fadeIn 0.5s; /* Optional: fade-in animation */
+}
+
+/* Optional: Animation for the confirmation message */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
