@@ -52,7 +52,7 @@
 .logo {
   display: block; /* Centers the image as a block element */
   margin: 10% auto; /* Center vertically in the viewport; adjust as needed */
-  max-width: 150px; /* Adjust the max width as needed */
+  max-width: 500px; /* Adjust the max width as needed */
   opacity: 1; /* Make the logo opaque */
 
 }
