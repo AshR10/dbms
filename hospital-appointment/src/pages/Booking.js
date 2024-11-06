@@ -1,27 +1,25 @@
-// src/pages/Booking.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Booking.css'; // Ensure you import the CSS for styling
+import './Booking.css';
 
 const Booking = () => {
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
   const [doctor, setDoctor] = useState('');
-  const [mobile, setMobile] = useState(''); // New state for mobile number
-  const [confirmationMessage, setConfirmationMessage] = useState(''); // State for confirmation message
+  const [mobile, setMobile] = useState('');
+  const [confirmationMessage, setConfirmationMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('https://dbms1-bd7k.onrender.com/api/appointments', { name, date, doctor, mobile });
-      setConfirmationMessage(`Booking Confirmed! Appointment ID: ${response.data._id}`); // Set confirmation message
-      // Clear form fields
+      setConfirmationMessage(`Booking Confirmed! Appointment ID: ${response.data._id}`);
+      
       setName('');
       setMobile('');
       setDate('');
       setDoctor('');
       
-      // Automatically clear the confirmation message after 5 seconds
       setTimeout(() => {
         setConfirmationMessage('');
       }, 5000);
@@ -33,8 +31,12 @@ const Booking = () => {
 
   return (
     <div className="booking-container">
+      {confirmationMessage && (
+        <div className="confirmation-message">{confirmationMessage}</div>
+      )}
+      
       <form onSubmit={handleSubmit} className="booking-form">
-        <h1>Book an Appointment</h1> {/* Moved header inside the form */}
+        <h1>Book an Appointment</h1>
         
         <label>Name:</label>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
@@ -45,7 +47,7 @@ const Booking = () => {
           value={mobile} 
           onChange={(e) => setMobile(e.target.value)} 
           required 
-          placeholder="123-456-7890" // Optional: add placeholder for better UX
+          placeholder="123-456-7890"
         />
         
         <label>Date:</label>
@@ -56,10 +58,6 @@ const Booking = () => {
         
         <button type="submit">Book Appointment</button>
       </form>
-
-      {confirmationMessage && ( // Conditionally render confirmation message
-        <div className="confirmation-message">{confirmationMessage}</div>
-      )}
     </div>
   );
 };
