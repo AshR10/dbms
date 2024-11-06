@@ -32,12 +32,30 @@ const User = () => {
           onChange={(e) => setMobile(e.target.value)}
         />
         <button onClick={fetchAppointments} className="button-link">Fetch Appointments</button>
-        {appointments.length > 0 && (
-          <ul>
-            {appointments.map((appointment) => (
-              <li key={appointment._id}>{appointment.date} - {appointment.doctor}</li>
-            ))}
-          </ul>
+        
+        {appointments.length > 0 ? (
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Date</th>
+                <th>Doctor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {appointments.map(appointment => (
+                <tr key={appointment._id}>
+                  <td>{appointment.name}</td>
+                  <td>{appointment.mobile}</td>
+                  <td>{new Date(appointment.date).toLocaleDateString()}</td>
+                  <td>{appointment.doctor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No appointments found.</p>
         )}
       </div>
     </div>
