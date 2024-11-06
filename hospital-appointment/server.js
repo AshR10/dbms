@@ -64,5 +64,20 @@ app.delete('/api/appointments', async (req, res) => {
     res.status(500).json({ error: 'Error deleting all appointments' });
   }
 });
+// Add this route to fetch appointments by mobile number
+app.get('/api/appointments/:mobile', async (req, res) => {
+  try {
+    const { mobile } = req.params;
+    const appointments = await Appointment.find({ mobile });
+    if (appointments.length === 0) {
+      return res.status(404).json({ error: 'No appointments found for this mobile number' });
+    }
+    res.status(200).json(appointments);
+  } catch (error) {
+    console.error('Error fetching appointments by mobile number:', error);
+    res.status(500).json({ error: 'Error fetching appointments by mobile number' });
+  }
+});
+
 
 app.listen(5000, () => console.log('Server running on port 5000'));
