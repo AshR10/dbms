@@ -7,8 +7,8 @@ const User = () => {
   const [appointments, setAppointments] = useState([]);
 
   const fetchAppointments = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/api/appointments/${mobile}`);
+    try {http://localhost
+      const response = await fetch(`https://dbms1-bd7k.onrender.com/api/appointments/${mobile}`);
       const data = await response.json();
       setAppointments(data);
     } catch (error) {
