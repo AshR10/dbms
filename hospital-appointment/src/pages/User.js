@@ -7,9 +7,14 @@ const User = () => {
   const [appointments, setAppointments] = useState([]);
 
   const fetchAppointments = async () => {
-    try {http://localhost
+    console.log("Fetching appointments for mobile number:", mobile);
+    try {
       const response = await fetch(`https://dbms1-bd7k.onrender.com/api/appointments/${mobile}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
       const data = await response.json();
+      console.log("Appointments fetched:", data);
       setAppointments(data);
     } catch (error) {
       console.error('Error fetching appointments:', error);
