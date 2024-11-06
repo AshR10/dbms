@@ -24,7 +24,7 @@ const Admin = () => {
 
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/appointments');
+      const response = await axios.get('https://dbms1-bd7k.onrender.com/api/appointments');
       console.log('Fetched appointments:', response.data);
       setAppointments(response.data);
     } catch (error) {
@@ -34,7 +34,7 @@ const Admin = () => {
 
   const deleteAppointment = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/appointments/${id}`);
+      await axios.delete(`https://dbms1-bd7k.onrender.com/api/appointments/${id}`);
       setAppointments((prevAppointments) =>
         prevAppointments.filter((appointment) => appointment._id !== id)
       );
@@ -45,7 +45,7 @@ const Admin = () => {
 
   const deleteAllAppointments = async () => {
     try {
-      await axios.delete('http://localhost:5000/api/appointments'); // Delete from database
+      await axios.delete('https://dbms1-bd7k.onrender.com/api/appointments'); // Delete from database
       setAppointments([]); // Clear appointments from state
     } catch (error) {
       console.error('Error deleting all appointments:', error);

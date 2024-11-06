@@ -14,7 +14,8 @@ const Home = () => {
 
       {/* Wrapper for the welcome text with a background */}
       <div className="welcome-container">
-        <h1 className="welcome-text">Welcome to the Hospital Appointment System</h1>
+        <h1 className="company_name">MedX Booking System</h1>
+        <h4 className="welcome-text">Welcome to the Hospital Appointment System</h4>
         <p className="welcome-subtext">Book your appointment with ease.</p>
       </div>
       

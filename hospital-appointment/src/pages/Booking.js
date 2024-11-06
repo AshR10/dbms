@@ -13,7 +13,7 @@ const Booking = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/appointments', { name, date, doctor, mobile });
+      const response = await axios.post('https://dbms1-bd7k.onrender.com/api/appointments', { name, date, doctor, mobile });
       setConfirmationMessage(`Booking Confirmed! Appointment ID: ${response.data._id}`); // Set confirmation message
       // Clear form fields
       setName('');

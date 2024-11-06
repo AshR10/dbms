@@ -83,6 +83,10 @@
 .text-container {
   display: none; /* Hides the old text container */
 }
+.company_name{
+  font-size: 32px; /* Adjust font size */
+  margin-top: 15px; /* Margin above the text */
+}
 
 /* Overall body styles for centering */
 body {
