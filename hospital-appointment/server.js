@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const multer = require('multer'); // Import multer for file uploads
+const path = require('path');
 const app = express();
-const Appointment = require('./models/Appointment'); // Make sure to import the model
+const Appointment = require('./models/Appointment');
+const Doctor = require('./models/Doctor'); // Import the Doctor model
 const cors = require('cors');
 
 app.use(cors()); // Enable CORS for all routes
-app.use(express.json());  // For parsing JSON bodies
+app.use(express.json()); // For parsing JSON bodies
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve static files from the 'uploads' directory
 
 // Replace this with your actual connection string
 const mongoURI = 'mongodb+srv://22cs353:22cs353@cluster0.uqt5njw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
@@ -14,6 +18,18 @@ const mongoURI = 'mongodb+srv://22cs353:22cs353@cluster0.uqt5njw.mongodb.net/?re
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected...'))
   .catch(err => console.log('MongoDB connection error:', err));
+
+// Define storage and upload configuration using multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Use timestamp as filename
+  },
+});
+
+const upload = multer({ storage });
 
 // Define your routes here, like the /api/appointments POST route
 app.post('/api/appointments', async (req, res) => {
@@ -64,6 +80,7 @@ app.delete('/api/appointments', async (req, res) => {
     res.status(500).json({ error: 'Error deleting all appointments' });
   }
 });
+
 // Add this route to fetch appointments by mobile number
 app.get('/api/appointments/:mobile', async (req, res) => {
   try {
@@ -79,5 +96,42 @@ app.get('/api/appointments/:mobile', async (req, res) => {
   }
 });
 
+// Define routes for doctors
+app.post('/api/doctors', upload.single('image'), async (req, res) => {
+  const { name, specialization } = req.body;
+  const imageUrl = req.file ? `/uploads/${req.file.filename}` : '';
+  const newDoctor = new Doctor({ name, specialization, imageUrl });
+  try {
+    await newDoctor.save();
+    res.status(201).json(newDoctor);
+  } catch (error) {
+    console.error('Error saving doctor:', error);
+    res.status(500).json({ error: 'Error saving doctor' });
+  }
+});
+
+app.get('/api/doctors', async (req, res) => {
+  try {
+    const doctors = await Doctor.find();
+    res.status(200).json(doctors);
+  } catch (error) {
+    console.error('Error fetching doctors:', error);
+    res.status(500).json({ error: 'Error fetching doctors' });
+  }
+});
+
+app.delete('/api/doctors/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedDoctor = await Doctor.findByIdAndDelete(id);
+    if (!deletedDoctor) {
+      return res.status(404).json({ error: 'Doctor not found' });
+    }
+    res.status(200).json(deletedDoctor);
+  } catch (error) {
+    console.error('Error deleting doctor:', error);
+    res.status(500).json({ error: 'Error deleting doctor' });
+  }
+});
 
 app.listen(5000, () => console.log('Server running on port 5000'));
