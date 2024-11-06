@@ -13,10 +13,10 @@ const Home = () => {
       <img src={logo} alt="Logo" className="logo" />
 
       {/* Wrapper for the welcome text with a background */}
-      <div className="welcome-container">
-        <h1 className="company_name">MedX Booking System</h1>
-        <h4 className="welcome-text">Welcome to the Hospital Appointment System</h4>
-        <p className="welcome-subtext">Book your appointment with ease.</p>
+     <div className="welcome-container">
+        {/* <h1 className="company_name">Need a doctor?</h1>
+        <h4 className="welcome-text">Use MedX</h4>
+        <p className="welcome-subtext">Book your appointment with ease.</p> */}
       </div>
       
       {/* Add the Slideshow component */}
