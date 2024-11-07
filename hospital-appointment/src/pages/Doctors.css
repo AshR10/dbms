@@ -1,0 +1,16 @@
+.doctors-page {
+    padding: 20px;
+    text-align: center;
+  }
+  
+.doctor-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+.doctors-page h2{
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #1aadde;
+} 
