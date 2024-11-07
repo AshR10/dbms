@@ -11,6 +11,7 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     z-index: -1; /* Send behind other content */
+    overflow: scroll;
 }
 
 /* Text container with light background */
@@ -136,4 +137,11 @@ tr:hover {
 
 .confirmation-dialog p {
     margin-bottom: 10px; /* Space below the message */
+}
+
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }

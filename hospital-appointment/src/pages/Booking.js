@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Booking.css';
+import Doctor from './Doctor'; // Import the Doctor component
 
 const Booking = () => {
   const [name, setName] = useState('');
@@ -8,6 +9,20 @@ const Booking = () => {
   const [doctor, setDoctor] = useState('');
   const [mobile, setMobile] = useState('');
   const [confirmationMessage, setConfirmationMessage] = useState('');
+  const [doctors, setDoctors] = useState([]);
+
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const response = await axios.get('https://dbms1-bd7k.onrender.com/api/doctors');
+        setDoctors(response.data);
+      } catch (error) {
+        console.error('Error fetching doctors:', error);
+      }
+    };
+
+    fetchDoctors();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +69,11 @@ const Booking = () => {
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
         
         <label>Doctor:</label>
-        <input type="text" value={doctor} onChange={(e) => setDoctor(e.target.value)} required />
+        <div className="doctor-selection">
+          {doctors.map((doc) => (
+            <Doctor key={doc._id} doctor={doc} onSelect={setDoctor} />
+          ))}
+        </div>
         
         <button type="submit">Book Appointment</button>
       </form>

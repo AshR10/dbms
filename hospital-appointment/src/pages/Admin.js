@@ -154,7 +154,7 @@ const Admin = () => {
           </table>
 
           <h2>Manage Doctors</h2>
-          <div>
+          <div className="centered-content">
             <input
               type="text"
               placeholder="Doctor Name"
@@ -162,7 +162,7 @@ const Admin = () => {
               onChange={(e) => setDoctorName(e.target.value)}
               style={{ padding: '10px', margin: '10px 0', width: '45%' }}
             />
-                       <input
+            <input
               type="text"
               placeholder="Specialization"
               value={specialization}
@@ -177,7 +177,7 @@ const Admin = () => {
             <button onClick={addDoctor} className="button-link">Add Doctor</button>
           </div>
 
-          <div>
+          <div className="centered-content">
             <h3>Doctor List</h3>
             <table>
               <thead>
