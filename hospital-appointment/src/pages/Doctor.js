@@ -7,7 +7,6 @@ const Doctor = ({ doctor, onSelect, isSelected }) => {
       className={`doctor-card ${isSelected ? 'selected' : ''}`} 
       onClick={() => onSelect(doctor.name)}
     >
-      <img src={doctor.imageUrl} alt={doctor.name} className="doctor-image" />
       <div className="doctor-info">
         <h3>{doctor.name}</h3>
         <p>Specialization: {doctor.specialization}</p>

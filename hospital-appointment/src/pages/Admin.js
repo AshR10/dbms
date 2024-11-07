@@ -10,7 +10,6 @@ const Admin = () => {
   const [doctors, setDoctors] = useState([]);
   const [doctorName, setDoctorName] = useState('');
   const [specialization, setSpecialization] = useState('');
-  const [image, setImage] = useState(null);
 
   const handleLogin = () => {
     if (username === 'admin' && password === 'password') {
@@ -67,9 +66,6 @@ const Admin = () => {
     const formData = new FormData();
     formData.append('name', doctorName);
     formData.append('specialization', specialization);
-    if (image) {
-      formData.append('image', image);
-    }
 
     try {
       const response = await axios.post('https://dbms1-bd7k.onrender.com/api/doctors', formData, {
@@ -80,7 +76,6 @@ const Admin = () => {
       setDoctors([...doctors, response.data]);
       setDoctorName('');
       setSpecialization('');
-      setImage(null);
     } catch (error) {
       console.error('Error adding doctor:', error);
     }
@@ -167,11 +162,6 @@ const Admin = () => {
               placeholder="Specialization"
               value={specialization}
               onChange={(e) => setSpecialization(e.target.value)}
-              style={{ padding: '10px', margin: '10px 0', width: '45%' }}
-            />
-            <input
-              type="file"
-              onChange={(e) => setImage(e.target.files[0])}
               style={{ padding: '10px', margin: '10px 0', width: '45%' }}
             />
             <button onClick={addDoctor} className="button-link">Add Doctor</button>

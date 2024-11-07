@@ -20,15 +20,6 @@
     border: 2px solid indigo; /* Highlight border for selected card */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
-
-.doctor-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
-
 .doctor-info {
     text-align: center;
 } 
