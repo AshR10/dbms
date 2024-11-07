@@ -71,7 +71,12 @@ const Booking = () => {
         <label>Doctor:</label>
         <div className="doctor-selection">
           {doctors.map((doc) => (
-            <Doctor key={doc._id} doctor={doc} onSelect={setDoctor} />
+            <Doctor 
+              key={doc._id} 
+              doctor={doc} 
+              onSelect={setDoctor} 
+              isSelected={doctor === doc.name} // Pass selected state
+            />
           ))}
         </div>
         

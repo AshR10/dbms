@@ -54,14 +54,11 @@
 /* Logo style */
 .logo {
   display: block; /* Centers the image as a block element */
-  margin: 0% auto 0 auto; /* Center horizontally and move to the upper half */
-  bottom: 50%; /* Adjust the vertical position if using position */
-  max-width: 100%; /* Adjust the max width as needed */
-  opacity: 1; /* Make the logo opaque */
-  position: relative; /* Ensure the logo is positioned relative to its normal position */
-  max-height: max-content;
+  margin: 0 auto; /* Center horizontally */
+  max-width: 100%;
+  max-height: 100%; /* Ensure it fits within the viewport */
+  position: relative;
 }
-
 
 /* Welcome container with a more transparent background and no rounded edges */
 .welcome-container {
@@ -100,4 +97,5 @@ body {
   position: relative; /* Ensure the child elements are positioned relative to the body */
   height: 100vh; /* Full viewport height */
   overflow: hidden; /* Prevent scrolling */
+  margin: 0; /* Remove default margin */
 }

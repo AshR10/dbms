@@ -1,9 +1,12 @@
 import React from 'react';
-import './Doctor.css'; // Create a CSS file for Doctor component styles
+import './Doctor.css'; // Ensure this CSS file exists and is correctly linked
 
-const Doctor = ({ doctor, onSelect }) => {
+const Doctor = ({ doctor, onSelect, isSelected }) => {
   return (
-    <div className="doctor-card" onClick={() => onSelect(doctor.name)}>
+    <div 
+      className={`doctor-card ${isSelected ? 'selected' : ''}`} 
+      onClick={() => onSelect(doctor.name)}
+    >
       <img src={doctor.imageUrl} alt={doctor.name} className="doctor-image" />
       <div className="doctor-info">
         <h3>{doctor.name}</h3>
